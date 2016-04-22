@@ -9,7 +9,7 @@ and open the template in the editor.
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <package name="default" extends="struts-default">
+    <package name="default" namespace="/tutorials" extends="struts-default">
         <action name="getTutorial" class="com.strutsDemo.action.TutorialAction">
             <result name="success">/jsp/success.jsp</result>
             <result name="failure">/jsp/error.jsp</result>

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,5 +14,7 @@
     </head>
     <body>
         <h1>Success for Tutorial Action</h1>
+        The best site is: <s:property value="bestTutorialSite"/><br/>
+        The language is: <s:property value="language"/>
     </body>
 </html>

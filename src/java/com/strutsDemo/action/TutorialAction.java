@@ -5,14 +5,37 @@
  */
 package com.strutsDemo.action;
 
+import com.strutsDemo.service.TutorialFinderService;
+
 /**
  *
  * @author huico
  */
 public class TutorialAction {
 
+    public String getBestTutorialSite() {
+        return bestTutorialSite;
+    }
+
+    public void setBestTutorialSite(String bestTutorialSite) {
+        this.bestTutorialSite = bestTutorialSite;
+    }      
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }   
+    
     public String execute() {
-        System.out.println("Hello from TutorialAction execute");        
+        TutorialFinderService tutorialFinder = new TutorialFinderService();
+        setBestTutorialSite(tutorialFinder.getBestTutorialSite(getLanguage()));
+        
         return "success";
     }
+    
+    private String bestTutorialSite = "";
+    private String language = "";
 }

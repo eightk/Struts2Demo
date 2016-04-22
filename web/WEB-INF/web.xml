@@ -11,6 +11,11 @@
         Welcome to Tomcat
     </description>
     
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        
+    </welcome-file-list>
+    
     <!--this filter is used to tell the tomcat to see struts.xml and find the mapping from it.-->
     <filter>
         <filter-name>struts2</filter-name>
