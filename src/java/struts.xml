@@ -9,10 +9,40 @@ and open the template in the editor.
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    <include file="login.xml"/>
+    <!--
+    <package name="login" namespace="/" extends="struts-default">
+        <action name="login" class="com.strutsDemo.action.LoginAction">
+            <result name="success">/jsp/searchForm.jsp</result>
+            <result name="error">/jsp/login.jsp</result>
+        </action>
+    </package>
+    -->
+
     <package name="default" namespace="/tutorials" extends="struts-default">
         <action name="getTutorial" class="com.strutsDemo.action.TutorialAction">
             <result name="success">/jsp/success.jsp</result>
-            <result name="failure">/jsp/error.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+        <!--wildcard can be used in normal actions too-->
+        <action name="get*" class="com.strutsDemo.action.{1}Action">
+            <result name="success">/jsp/success.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
         </action>
     </package>
+    
+    <!--defining an action always point to specific jsp and it is also an example for action wildcards e.g. "search*"-->
+    <!--for mutiple wildcards fit the url, go to the first find one(by order), 
+    so to order the actions, put the more specific ones first then the wildcards.-->
+    <package name="search" namespace="/" extends="struts-default">
+        <action name="searchForm">
+            <result>/jsp/searchForm.jsp</result>
+        </action>
+        <!--many to many mapping, using the wildcard in the result url mapping, 
+        {1} indicate the 1st wildcard, {2} means the 2nd wildcard-->
+        <action name="search*">
+            <result>/jsp/search{1}.jsp</result>
+        </action>
+    </package>
+    
 </struts>
