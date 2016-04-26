@@ -14,7 +14,7 @@
     <body>
         <h1>Search</h1>
         <!--by default it is post-->
-        <s:form action="../tutorials/getTutorial">
+        <s:form action="/tutorials/getTutorial">
             <s:textfield label="Enter the language" key="language"/>
             <s:submit/>
         </s:form>

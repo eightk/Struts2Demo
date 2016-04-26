@@ -33,7 +33,17 @@ public class TutorialAction implements Action {
     public String execute() {
         TutorialFinderService tutorialFinder = new TutorialFinderService();
         setBestTutorialSite(tutorialFinder.getBestTutorialSite(getLanguage()));
+        System.out.println("Execute method executed");
+        return SUCCESS;
+    }
 
+    public String getTutorial() {
+        System.out.println("Get Tutorial method executed");
+        return SUCCESS;
+    }
+    
+    public String addTutorial() {
+        System.out.println("Add Tutorial method executed");
         return SUCCESS;
     }
 

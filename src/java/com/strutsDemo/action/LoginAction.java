@@ -5,19 +5,35 @@
  */
 package com.strutsDemo.action;
 
-import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.commons.lang.StringUtils;
 
 /**
  *
  * @author huico
  */
-public class LoginAction implements Action {
+public class LoginAction extends ActionSupport {
 
-    public String execute() {
+    @Override
+    public String execute() {        
         if (getUserId() != null && getPassword() != null && getUserId().equals("test") && getPassword().equals("test")) {
             return SUCCESS;
         }
         return LOGIN;
+    }
+
+    //validate() auto called before execute()
+    @Override
+    public void validate() {
+        super.validate(); 
+        if(StringUtils.isEmpty(getUserId())) {
+            //deal with user Id is blank
+            addFieldError("userId", "User ID cannot be blank");
+        }
+        if(StringUtils.isEmpty(getPassword())) {
+            //deal with password is blank
+            addFieldError("password", "Password cannot be blank");
+        }
     }
 
     public String getUserId() {
