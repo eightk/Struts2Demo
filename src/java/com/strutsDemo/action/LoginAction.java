@@ -6,17 +6,22 @@
 package com.strutsDemo.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.strutsDemo.model.User;
+import com.strutsDemo.service.LoginService;
 import org.apache.commons.lang.StringUtils;
 
 /**
  *
  * @author huico
  */
-public class LoginAction extends ActionSupport {
+public class LoginAction extends ActionSupport implements ModelDriven {
 
     @Override
-    public String execute() {        
-        if (getUserId() != null && getPassword() != null && getUserId().equals("test") && getPassword().equals("test")) {
+    public String execute() {
+        LoginService service = new LoginService();
+
+        if (service.verifyLogin(user)) {
             return SUCCESS;
         }
         return LOGIN;
@@ -25,33 +30,33 @@ public class LoginAction extends ActionSupport {
     //validate() auto called before execute()
     @Override
     public void validate() {
-        super.validate(); 
-        if(StringUtils.isEmpty(getUserId())) {
+        super.validate();
+        if (StringUtils.isEmpty(user.getUserId())) {
             //deal with user Id is blank
             addFieldError("userId", "User ID cannot be blank");
         }
-        if(StringUtils.isEmpty(getPassword())) {
+        if (StringUtils.isEmpty(user.getPassword())) {
             //deal with password is blank
             addFieldError("password", "Password cannot be blank");
         }
     }
 
-    public String getUserId() {
-        return userId;
+    @Override
+    public Object getModel() {
+        if (user == null) {
+            user = new User();
+        }
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public User getUser() {
+        return user;
     }
 
-    public String getPassword() {
-        return password;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    private User user;
 
-    private String userId;
-    private String password;
 }
