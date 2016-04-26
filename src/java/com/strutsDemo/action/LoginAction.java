@@ -12,14 +12,14 @@ import com.opensymphony.xwork2.Action;
  * @author huico
  */
 public class LoginAction implements Action {
-    
+
     public String execute() {
-        if(getUserId().equals("test") && getPassword().equals("test")) {
+        if (getUserId() != null && getPassword() != null && getUserId().equals("test") && getPassword().equals("test")) {
             return SUCCESS;
         }
         return LOGIN;
     }
-    
+
     public String getUserId() {
         return userId;
     }
@@ -34,8 +34,8 @@ public class LoginAction implements Action {
 
     public void setPassword(String password) {
         this.password = password;
-    }  
-    
+    }
+
     private String userId;
     private String password;
 }

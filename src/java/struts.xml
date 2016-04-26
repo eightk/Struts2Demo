@@ -27,7 +27,7 @@ and open the template in the editor.
         <!--wildcard can be used in normal actions too-->
         <action name="get*" class="com.strutsDemo.action.{1}Action">
             <result name="success">/jsp/success.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
+            <result name="login">/jsp/login.jsp</result>
         </action>
     </package>
     
