@@ -21,6 +21,8 @@ and open the template in the editor.
 
     <package name="default" namespace="/tutorials" extends="struts-default">
         <action name="*Tutorial" class="com.strutsDemo.action.TutorialAction" method="{1}Tutorial">
+            <!-- struts-default package's default-interceptor-ref -->
+            <interceptor-ref name="defaultStack"/>
             <result name="success">/jsp/success.jsp</result>
             <result name="error">/jsp/error.jsp</result>
         </action>
